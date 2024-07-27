@@ -1,0 +1,19 @@
+
+
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
+.bg-body-tertiary {
+    background-color: darkcyan !important;
+}
+
+.logo {
+    width: 100px;
+}
+
+
+body{
+
+    background-color: #212529 !important;
+
+
+}

@@ -1,0 +1,33 @@
+<h1>Series ({{ series.length }})</h1>
+<div class="input-group mb-3">
+  <span class="input-group-text">
+    <i class="fa fa-filter"></i>
+  </span>
+  <input [(ngModel)]="filtro" type="text" class="form-control" placeholder="Filtrar">
+</div>
+
+
+
+<ul class="row list-unstyled">
+    @for(series of (series | filterSeries: filtro); track series){
+        <li class="col-md-6 col-sm-12 col-lg-3 my-1">
+            <div class="card h-100">
+                <img [src]="series.image"  class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{ series.title }} </h5>
+                  <h6 class="card-title">{{ series.thema }} </h6>
+                  <p class="card-text">{{ series.synopsis }}</p>
+                  
+
+                  
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Año {{ series.year }}</small>
+                    <p class="card-text">{{ series.pricePerDay | divisa }} Por día </p>
+                    <p class="card-text">{{ series.valoration }} ★</p>
+                    <a [routerLink]="'/rent/'+series._id" class="btn btn-outline-primary" style="display: block">Alquilar</a>
+                </div>
+            </div>
+        </li>
+    }
+</ul>

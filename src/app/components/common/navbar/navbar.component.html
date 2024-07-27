@@ -1,0 +1,71 @@
+
+
+
+<nav class="navbar navbar-expand-md bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img id="logo1" src="../../../../assets/logos/logoPequeñoBlanco.png" alt="CineStream" class="logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/">Inicio</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="catalogueDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Catálogo
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="catalogueDropdown">
+            <li><a class="dropdown-item" routerLink="/catalogue/movies">Películas</a></li>
+            <li><a class="dropdown-item" routerLink="/catalogue/series">Series</a></li>
+          </ul>
+        </li>
+      </ul>
+      <a class="navbar-brand mx-auto d-none d-md-block" href="#">
+        <img id="logo2" src="../../../../assets/logos/cinestream.png" alt="CineStream" class="logo">
+      </a>
+      <ul class="navbar-nav ms-auto">
+        @if(authService.user === null){
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login">Iniciar sesión</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/signup">Registrarse</a>
+          </li>
+        }
+        @else if (authService.user.role == 'admin'){
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Gestión
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" routerLink="/admin/bookings">Gestionar reservas</a></li>
+              <li><a class="dropdown-item" routerLink="/admin/users">Gestionar usuarios</a></li>
+              <li><a class="dropdown-item" routerLink="/admin/catalogue">Gestionar catálogo</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link btn btn-link" (click)="authService.deleteUser()">Cerrar sesión</button>
+          </li>
+        }
+        @else {
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Mi perfil
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" routerLink="/me/my-bookings">Mis reservas</a></li>
+              <li><a class="dropdown-item" routerLink="/me/my-info">Mi información</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link btn btn-link" (click)="authService.deleteUser()">Cerrar sesión</button>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,9 @@
+.card-body{
+    background-color:rgb(33, 49, 71);
+}
+
+
+h1, p, button, label{
+
+    color: white
+}

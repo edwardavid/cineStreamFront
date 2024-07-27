@@ -1,0 +1,44 @@
+@if(bookings.length === 0) {
+    <div class="alert alert-warning">
+      <i class="fa fa-circle-info"></i>
+      No tienes reservas todavía
+    </div>
+  } @else {
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Usuario</th>
+          <th scope="col">Email</th>
+          <th scope="col">Fecha inicio</th>
+          <th scope="col">Fecha fin</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Peliculas</th>
+          <th scope="col">Series</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(booking of bookings; track booking) {
+          <tr>
+            <td>
+              <button [disabled]="!(booking.startDate | canCancel)" (click)="eliminar(booking._id)" class="btn btn-danger btn-sm me-1">
+                <i class="fa fa-trash"></i>
+              </button>
+              <button [disabled]="!(booking.startDate | canCancel)" (click)="editar(booking._id)" class="btn btn-primary btn-sm">
+                <i class="fa fa-pencil"></i>
+              </button>
+            </td>
+            <td>{{ booking.user.name }}</td>
+            <td>{{ booking.user.email }}</td>
+            <td>{{ booking.startDate | formatDate }}</td>
+            <td>{{ booking.endDate | formatDate }}</td>
+            <td>{{ booking.price}}</td>
+            <td>{{ booking.movie && booking.movie.title || ''}}</td>  
+            <td>{{ booking.serie && booking.serie.title || '' }}</td> <!-- verifica si booking.serie no es null o undefined antes de intentar acceder a su propiedad title-->
+            
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+  

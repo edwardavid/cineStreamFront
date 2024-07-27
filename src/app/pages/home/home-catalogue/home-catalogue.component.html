@@ -1,0 +1,28 @@
+<!-- <h1>catalogo de peliculas ({{ movies.length }})</h1>
+<div class="input-group mb-3">
+  <span class="input-group-text">
+    <i class="fa fa-filter"></i>
+  </span>
+  <input [(ngModel)]="filtro" type="text" class="form-control" placeholder="Filtrar">
+</div>
+ 
+<ul class="row list-unstyled">
+    @for(movie of (movies | filtermovies: filtro); track movie){
+        <li class="col-md-6 col-sm-12 col-lg-3 my-1">
+            <div class="card h-100" >
+                <img [src]="movie.image" width="200" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{movie.title}}</h5>
+                  <p class="card-text">{{movie.synopsis}}</p>
+                  <p class="card-text">{{movie.pricePerDay | divisa}} por día</p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">Año{{movie.year}}</small>
+                </div>
+                <span><a [routerLink]="'/rent/'+movie._id" class="btn btn-outline-primary" style="display: block">Alquilar</a></span>
+            </div>
+        </li>
+    }
+ 
+</ul>
+ -->

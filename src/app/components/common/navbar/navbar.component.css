@@ -1,0 +1,36 @@
+.bg-body-tertiary {
+    background-color: #48D4CA !important;
+}
+
+
+#logo1{
+    display: block; /* Asegura que la imagen no tenga espacio extra alrededor */
+    max-width: 100%; /* Mantiene la imagen responsiva */
+    
+    
+}
+
+#logo2{
+    width: 300px;
+    display: block; 
+    max-width: 100%; 
+   
+    }
+
+/* elementos del navbar */
+ul{
+    font-size: 28px;
+    font-family: "Lilita One", sans-serif;
+    font-weight: 400;
+    font-style:italic;
+}
+    
+
+
+
+/* separacion de elementos navbar */
+.nav-item {
+    margin-left: 3rem;
+    margin-right: 6rem;
+}
+
