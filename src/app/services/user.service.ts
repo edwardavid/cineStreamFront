@@ -30,7 +30,7 @@ export class UserService {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.authService.user?.token}`,
     });
-    return this.http.delete(`${this.url}/${this.authService.user?.id}/${userId}`,{headers})
+    return this.http.delete(`${this.url}/${userId}`,{headers})
   }
 
 }

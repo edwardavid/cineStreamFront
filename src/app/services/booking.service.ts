@@ -74,14 +74,14 @@ export class BookingService {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.authService.user?.token}`,
     });
-    return this.http.delete(`${this.url}/${this.authService.user?.id}/${bookingId}`,{headers})
+    return this.http.delete(`${this.url}/${this.authService.user?._id}/${bookingId}`,{headers})
   }
 
   updateBooking(bookingId: string, startDate: string,  endDate: string) {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.authService.user?.token}`,
     });
-   return this.http.patch<Booking>(`${this.url}/${this.authService.user?.id}/${bookingId}`, {
+   return this.http.patch<Booking>(`${this.url}/${this.authService.user?._id}/${bookingId}`, {
       startDate,
       endDate,
     }, { headers });

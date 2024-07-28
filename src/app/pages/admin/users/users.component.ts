@@ -25,6 +25,7 @@ export class UsersComponent implements OnInit {
     this.userService.getUsers().subscribe({
       next: (response: User[]) => {
         this.users = response as User[];
+        console.log(this.users)
       },
       error: (error) => {
         console.error('Error al cargar los usuarios', error);
@@ -53,7 +54,7 @@ export class UsersComponent implements OnInit {
               timer: 2000
             });
 
-            this.users = this.users.filter(x => x.id !== userId);
+            this.users = this.users.filter(x => x._id !== userId);
           },
           error: () => {
             Swal.fire({
