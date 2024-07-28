@@ -32,4 +32,41 @@ export class UsersComponent implements OnInit {
     });
   }
 
+  eliminar(userId: string) {
+    Swal.fire({
+      title: "¿Estás seguro?",
+      text: "No podrás revertir esta acción",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sí, eliminar"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.userService.deleteUser(userId).subscribe({
+          next: () => {
+            Swal.fire({
+              title: "¡Reserva eliminada!",
+              text: "Tu reserva ha sido eliminada correctamente",
+              icon: "success",
+              showConfirmButton: false,
+              timer: 2000
+            });
+
+            this.users = this.users.filter(x => x.id !== userId);
+          },
+          error: () => {
+            Swal.fire({
+              title: "Oops!",
+              text: "Ha ocurrido un error",
+              icon: "error",
+              showConfirmButton: false,
+              timer: 1500
+            });
+          }
+        });
+      }
+    });
+  }
+
  }

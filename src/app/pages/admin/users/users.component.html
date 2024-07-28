@@ -10,6 +10,7 @@
         <thead>
           <tr>
             <th scope="col"></th>
+            <th scope="col"></th>
             <th scope="col">Nombre</th>
             <th scope="col">Email</th>
             <th scope="col">Rol</th>
@@ -18,6 +19,11 @@
         <tbody>
           @for (user of users; track user) {
             <tr>
+              <td>
+                <button (click)="eliminar(user.id)" class="btn btn-danger btn-sm me-1">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </td>
               <td>{{ user.id }}</td>
               <td>{{ user.name }}</td>
               <td>{{ user.email }}</td>
