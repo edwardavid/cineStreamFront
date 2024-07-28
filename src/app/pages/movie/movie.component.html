@@ -1,4 +1,4 @@
-<h1>Peliculas ({{ movies.length }})</h1>
+<h1>Películas ({{ movies.length }})</h1>
 <div class="input-group mb-3">
   <span class="input-group-text">
     <i class="fa fa-filter"></i>
@@ -10,12 +10,14 @@
 
 <ul class="row list-unstyled">
     @for(movie of (movies | filtermovies: filtro); track movie){
-        <li class="col-md-6 col-sm-12 col-lg-3 my-1">
+        <li class="col-md-6 col-sm-12 col-lg-3 my-1 p-3">
             <div class="card h-100">
                 <img [src]="movie.image"  class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">{{ movie.title }} </h5>
-                  <h6 class="card-title">{{ movie.thema }} </h6>
+                  <br>
+                  <h6 class="card-title"><span class="tema">{{ movie.thema }}</span></h6>
+                  <br>
                   <p class="card-text">{{ movie.synopsis }}</p>
                   
 

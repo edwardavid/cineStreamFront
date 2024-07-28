@@ -10,12 +10,14 @@
 
 <ul class="row list-unstyled">
     @for(series of (series | filterSeries: filtro); track series){
-        <li class="col-md-6 col-sm-12 col-lg-3 my-1">
+        <li class="col-md-6 col-sm-12 col-lg-3 my-1 p-3">
             <div class="card h-100">
                 <img [src]="series.image"  class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">{{ series.title }} </h5>
-                  <h6 class="card-title">{{ series.thema }} </h6>
+                  <br>
+                  <h6 class="card-title"><span class="tema">{{ series.thema }}</span></h6>
+                  <br>
                   <p class="card-text">{{ series.synopsis }}</p>
                   
 

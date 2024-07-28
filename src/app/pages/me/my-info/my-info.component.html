@@ -1,33 +1,35 @@
-<div class="container mt-4">
-    <h2>Mi información</h2>
-    
-    <div class="datos_personales">
-        <h3>Bienvenido {{ user?.name }}</h3>
-        <p>Correo electrónico: {{ user?.email }}</p>
-        <p>Mi rol: {{ user?.role }}</p>
-    </div>
+<div class="info p-3">
+  <div class="container">
+    <h1>Mi información personal</h1>
   
-    <div ngIf="user; else loading">
-      <form [formGroup]="form" action="" (ngSubmit)="actualizar()">
-        <div class="mb-3">
-          <label for="name" class="form-label">Nombre</label>
-          <input type="text" class="form-control" formControlName="name" name="name" required>
-        </div>
-        <div class="mb-3">
-          <label for="email" class="form-label">Correo Electrónico</label>
-          <input type="email" class="form-control" formControlName="email" name="email" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Actualizar Información</button>
-      </form>
+      <span class="datos_personales">
+          <h3>Bienvenido: <span class="datosName">{{ user?.name }}</span></h3>
+          <p>Correo electrónico: <span class="datosName">{{ user?.email }}</span></p>
+          <p>Mi rol: <span class="datosName">{{ user?.role }}</span></p>
+      </span>
   
-      <div class="mt-4">
-        <h3>Seguridad</h3>
-        <button class="btn btn-warning" (click)="editar()">Cambiar Contraseña</button>
-        <button id="button" class="btn btn-danger " (click)="eliminar()">Eliminar Cuenta</button>
+      <div ngIf="user; else loading">
+        <form [formGroup]="form" action="" (ngSubmit)="actualizar()">
+          <div class="mb-3">
+            <label for="name" class="form-label">Nombre</label>
+            <input type="text" class="form-control" formControlName="name" name="name" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Correo Electrónico</label>
+            <input type="email" class="form-control" formControlName="email" name="email" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Actualizar Información</button>
+        </form>
+  
+        <div class="mt-4">
+          <h3>Seguridad</h3>
+          <button class="btn btn-warning mr-2" (click)="editar()">Cambiar Contraseña</button>
+          <button id="button" class="btn btn-danger m-2 " (click)="eliminar()">Eliminar Cuenta</button>
+        </div>
       </div>
-    </div>
   
-    <ng-template #loading>
-      <p>Cargando información del usuario...</p>
-    </ng-template>
-  </div>
+      <ng-template #loading>
+        <p>Cargando información del usuario...</p>
+      </ng-template>
+    </div>
+</div>

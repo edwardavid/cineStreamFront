@@ -1,0 +1,40 @@
+
+h1{
+    color: white;
+}
+
+img{
+    padding: 1px;
+}
+
+.tema{
+    font-size: 18px;
+     font-family:Verdana, Geneva, Tahoma, sans-serif ;
+     background-color:  #b2d9eb;
+     padding: 5px;
+
+     border-radius: 50px;
+     
+}
+
+.card-body{
+    text-align:start;
+}
+
+h5{
+    font-size: 2rem;
+}
+
+h6{
+    font-size: 20px;
+     font-family:Verdana, Geneva, Tahoma, sans-serif ;
+}
+
+p{
+    font-size: 20px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif ;   
+}
+
+ 
+
+

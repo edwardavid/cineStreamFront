@@ -24,6 +24,13 @@ ul{
     font-weight: 400;
     font-style:italic;
 }
+
+ul:hover{
+    transform: scale(1.1); /* scale up by 10% */
+    transition: transform 0.3s ease-in-out; /* smooth animation */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* add a dark shadow */
+  transition: text-shadow 0.3s ease-in-out; /* smooth animation */
+}
     
 
 
