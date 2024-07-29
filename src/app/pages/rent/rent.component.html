@@ -5,23 +5,25 @@
   <div class="col-md-5" *ngIf="movie || series">
     <div *ngIf="movie; else seriesDetails">
       <!-- <img [src]="movie.trailer" width="350" alt="" /> -->
-      <p>{{ movie.title }}</p>
-      <p>{{ movie.year }}</p>
-      <p>{{ movie.thema }}</p>
-      <p>Director: {{ movie.director }}</p>
-      <p>Reparto destacado: {{ movie.actors }}</p>
-      <p>Sinopsis: {{ movie.synopsis }}, {{ movie.ageRestriction }}</p>
-      <p>Valoración: {{ movie.valoration }}</p>
+      <ul>
+      <h2>{{ movie.title }}</h2>
+      <p>({{ movie.year }})</p>
+      <li><p>Género: {{ movie.thema }}</p></li>
+      <li><p>Director: {{ movie.director }}</p></li>
+      <li><p>Reparto destacado: {{ movie.actors }}</p></li>
+      <li><p>Sinopsis: {{ movie.synopsis }} {{ movie.ageRestriction }}</p></li>
+      <li><p>Valoración: {{ movie.valoration }}</p></li>
+    </ul>
     </div>
     <ng-template #seriesDetails>
       <!-- <img [src]="series?.trailer" width="350" alt="" /> -->
-      <p>{{ series?.title }}</p>
-      <p>{{ series?.year }}</p>
-      <p>{{ series?.thema }}</p>
-      <p>Director: {{ series?.director }}</p>
-      <p>Reparto destacado: {{ series?.actors }}</p>
-      <p>Sinopsis: {{ series?.synopsis }}, {{ series?.ageRestriction }}</p>
-      <p>Valoración: {{ series?.valoration }}</p>
+      <h2>{{ series?.title }}</h2>
+      <p>({{ series?.year }})</p>
+      <li><p>Género: {{ series?.thema }}</p></li>
+      <li><p>Director: {{ series?.director }}</p></li>
+      <li><p>Reparto destacado: {{ series?.actors }}</p></li>
+      <li><p>Sinopsis: {{ series?.synopsis }} {{ series?.ageRestriction }}</p></li>
+      <li><p>Valoración: {{ series?.valoration }}</p></li>
     </ng-template>
   </div>
 

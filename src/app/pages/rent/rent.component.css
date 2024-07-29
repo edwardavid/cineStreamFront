@@ -1,3 +1,11 @@
-p{
-    color: wheat;
+h2{
+    color: white;
+}
+
+p, li{
+    color: white;
+}
+
+ul{
+    list-style-type: square;
 }
