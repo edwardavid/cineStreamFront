@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../interfaces/user';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class AuthService {
   user: User | null = null;
   url: string = "http://localhost:4040/api/users";
   
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     // Rescatar usuario de localStorage
     const userData = localStorage.getItem('user');
     if (userData) {
@@ -44,7 +45,7 @@ export class AuthService {
   deleteUser() {
     this.user = null;
     localStorage.removeItem("user");
-    window.location.reload(); // Recargar la página
+    this.router.navigate(['/']);
   }
 
   isUserAdmin(): boolean {
