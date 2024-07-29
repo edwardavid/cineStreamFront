@@ -30,7 +30,7 @@ export class MovieService {
   }
 
   addMovie(movie: Movie): Observable<Movie> {
-    return this.http.post<Movie>(this.url, movie, { headers: this.getAuthHeaders() });
+    return this.http.post<Movie>(`${this.url}`, { headers: this.getAuthHeaders() });
   }
 
   updateMovie(id: string, movie: Movie): Observable<any> {

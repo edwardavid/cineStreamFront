@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { FilterMoviesPipe } from '../../../pipes/filter-movies.pipe';
 import Swal from 'sweetalert2';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-vehicles',
@@ -37,7 +38,7 @@ export class CatalogueComponent {
   editar(movie: string) {
     console.log('ID de la pelicula a editar:', movie);
     const movies = this.movie.find(v => v._id === movie);
-    console.log('pelicula encontrado:', movie);
+    console.log('pelicula encontrada:', this.movie);
 
     if (movies) {
         Swal.fire({
@@ -45,17 +46,17 @@ export class CatalogueComponent {
             html: `<div>
               <div>
                 <label class="form-label">Titulo</label>
-                <input id="brand" type="text" class="form-control" value="${movies.title}">
+                <input id="title" type="text" class="form-control" value="${movies.title}">
               </div>
 
               <div>
                 <label class="form-label">Director</label>
-                <input id="brand" type="text" class="form-control" value="${movies.director}">
+                <input id="director" type="text" class="form-control" value="${movies.director}">
               </div>
 
               <div>
                 <label class="form-label">Actores</label>
-                <input id="brand" type="text" class="form-control" value="${movies.actors}">
+                <input id="actors" type="text" class="form-control" value="${movies.actors}">
               </div>
 
               <div>
@@ -65,32 +66,32 @@ export class CatalogueComponent {
 
               <div>
                 <label class="form-label">Género</label>
-                <input id="brand" type="text" class="form-control" value="${movies.thema}">
+                <input id="thema" type="text" class="form-control" value="${movies.thema}">
               </div>
               
               <div>
                 <label class="form-label">Sinopsis</label>
-                <input id="description" type="text" class="form-control" value="${movies.synopsis}">
+                <input id="synopsis" type="text" class="form-control" value="${movies.synopsis}">
               </div>
 
               <div>
                 <label class="form-label">Imagen</label>
-                <input id="brand" type="text" class="form-control" value="${movies.image}">
+                <input id="image" type="text" class="form-control" value="${movies.image}">
               </div>
 
               <div>
                 <label class="form-label">Valoración</label>
-                <input id="brand" type="text" class="form-control" value="${movies.valoration}">
+                <input id="valoration" type="text" class="form-control" value="${movies.valoration}">
               </div>
 
               <div>
                 <label class="form-label">Edad</label>
-                <input id="brand" type="text" class="form-control" value="${movies.ageRestriction}">
+                <input id="ageRestriction" type="text" class="form-control" value="${movies.ageRestriction}">
               </div>
 
               <div>
                 <label class="form-label">Trailer</label>
-                <input id="brand" type="text" class="form-control" value="${movies?.trailer}">
+                <input id="trailer" type="text" class="form-control" value="${movies?.trailer}">
               </div>
 
 
@@ -117,9 +118,10 @@ export class CatalogueComponent {
                 const trailer = (document.getElementById('trailer') as HTMLInputElement).value;
                 const pricePerDay = parseFloat((document.getElementById('pricePerDay') as HTMLInputElement).value);
                 console.log('Datos de película actualizados:', { title, director, actors, year, thema, synopsis, image, valoration, ageRestriction, trailer, pricePerDay});
-                return {title, director, synopsis, year, pricePerDay };
-            }
-        }).then((result) => {
+                return {title, director, actors, year, thema, synopsis, image, valoration, ageRestriction, trailer, pricePerDay };
+              }
+            }).then((result) => {
+          console.log(result)
             if (result.isConfirmed) {
                 const updatedMovie = result.value;
                 console.log('Datos confirmados para actualizar', updatedMovie);
@@ -198,17 +200,17 @@ export class CatalogueComponent {
       html: `<div>
               <div>
                 <label class="form-label">Titulo</label>
-                <input id="brand" type="text" class="form-control">
+                <input id="title" type="text" class="form-control">
               </div>
 
               <div>
                 <label class="form-label">Director</label>
-                <input id="brand" type="text" class="form-control">
+                <input id="director" type="text" class="form-control">
               </div>
 
               <div>
                 <label class="form-label">Actores</label>
-                <input id="brand" type="text" class="form-control">
+                <input id="actors" type="text" class="form-control">
               </div>
 
               <div>
@@ -218,32 +220,32 @@ export class CatalogueComponent {
 
               <div>
                 <label class="form-label">Género</label>
-                <input id="brand" type="text" class="form-control">
+                <input id="thema" type="text" class="form-control">
               </div>
               
               <div>
                 <label class="form-label">Sinopsis</label>
-                <input id="description" type="text" class="form-control">
+                <input id="synopsis" type="text" class="form-control">
               </div>
 
               <div>
                 <label class="form-label">Imagen</label>
-                <input id="brand" type="text" class="form-control">
+                <input id="image" type="text" class="form-control">
               </div>
 
               <div>
                 <label class="form-label">Valoración</label>
-                <input id="brand" type="text" class="form-control">
+                <input id="valoration" type="text" class="form-control">
               </div>
 
               <div>
                 <label class="form-label">Edad</label>
-                <input id="brand" type="text" class="form-control">
+                <input id="ageRestriction" type="text" class="form-control">
               </div>
 
               <div>
                 <label class="form-label">Trailer</label>
-                <input id="brand" type="text" class="form-control">
+                <input id="trailer" type="text" class="form-control">
               </div>
 
 
@@ -269,7 +271,8 @@ export class CatalogueComponent {
         const ageRestriction = (document.getElementById('ageRestriction') as HTMLInputElement).value;
         const trailer = (document.getElementById('trailer') as HTMLInputElement).value;
         const pricePerDay = parseFloat((document.getElementById('pricePerDay') as HTMLInputElement).value);
-        return {title, director, synopsis, year, pricePerDay };
+        return {title, director, actors, year, thema, synopsis, image, valoration, ageRestriction, trailer, pricePerDay };
+
       }
     }).then((result) => {
       if (result.isConfirmed) {
@@ -288,7 +291,7 @@ export class CatalogueComponent {
             window.location.reload(); // Recargar la página
 
           },
-          error: (error) => {
+          error: (error: HttpErrorResponse) => {
             console.error('Error al agregar película', error);
             Swal.fire({
               title: 'Oops!',

@@ -23,6 +23,7 @@
     "cookie-service": "^0.0.0",
     "frame": "^1.0.0-alpha.2",
     "jquery": "^3.7.1",
+    "localStorage": "^1.0.4",
     "ngx-cookie-service": "^17.1.0",
     "rxjs": "~7.8.0",
     "sass": "^1.77.8",
