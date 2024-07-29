@@ -18,17 +18,23 @@
     }
 
 /* elementos del navbar */
-ul{
+li{
     font-size: 28px;
     font-family: "Lilita One", sans-serif;
     font-weight: 400;
     font-style:italic;
 }
 
-ul:hover{
+li:hover{
+   transition: transform 0.3s ease-in-out; /* smooth animation */
+    text-shadow: 0 0 10px rgba(202, 9, 9, 0.5); /* add a dark shadow */
+  transition: text-shadow 0.3s ease-in-out; /* smooth animation */
+}
+
+button:hover{
     transform: scale(1.1); /* scale up by 10% */
     transition: transform 0.3s ease-in-out; /* smooth animation */
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* add a dark shadow */
+    text-shadow: 0 0 10px rgba(245, 4, 4, 0.5); /* add a dark shadow */
   transition: text-shadow 0.3s ease-in-out; /* smooth animation */
 }
     
