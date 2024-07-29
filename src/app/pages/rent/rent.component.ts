@@ -12,6 +12,7 @@ import { BookingFormData } from '../../interfaces/booking-form-data';
 import { Series } from '../../interfaces/series';
 import Swal from 'sweetalert2';
 import { CommonModule } from '@angular/common';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-rent',
@@ -20,11 +21,13 @@ import { CommonModule } from '@angular/common';
   templateUrl: './rent.component.html',
   styleUrls: ['./rent.component.css']
 })
-export class RentComponent implements OnDestroy {
+export class RentComponent implements OnDestroy  {
   parametro: string | null = null;
   movie: Movie | null = null;
   series: Series | null = null;
   form: FormGroup;
+  safeUrl!: SafeResourceUrl;
+
 
   constructor(
     private route: ActivatedRoute,
@@ -34,7 +37,8 @@ export class RentComponent implements OnDestroy {
     public authService: AuthService,
     private cookieService: CookieService,
     private bookingService: BookingService,
-    private router: Router
+    private router: Router,
+    private sanitizer: DomSanitizer
   ) {
     let data: BookingFormData = { startDate: null, endDate: null };
     if (cookieService.check("booking-form-data")) {
@@ -60,7 +64,9 @@ export class RentComponent implements OnDestroy {
     this.movieService.getById(id).subscribe({
       next: (response) => {
         this.movie = response as Movie;
-      },
+        this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.movie.trailer!);
+
+      }, 
       error: () => {
         this.movie = null;
       }
@@ -69,6 +75,7 @@ export class RentComponent implements OnDestroy {
     this.seriesService.getById(id).subscribe({
       next: (response) => {
         this.series = response as Series;
+        this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.series.trailer!);
       },
       error: () => {
         this.series = null;
