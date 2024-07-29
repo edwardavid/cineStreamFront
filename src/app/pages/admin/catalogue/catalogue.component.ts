@@ -235,7 +235,7 @@ export class CatalogueComponent {
 
               <div>
                 <label class="form-label">Valoración</label>
-                <input id="valoration" type="text" class="form-control">
+                <input id="valoration" type="number" class="form-control">
               </div>
 
               <div>
