@@ -47,8 +47,8 @@ export class UsersComponent implements OnInit {
         this.userService.deleteUser(userId).subscribe({
           next: () => {
             Swal.fire({
-              title: "¡Reserva eliminada!",
-              text: "Tu reserva ha sido eliminada correctamente",
+              title: "¡Usuario eliminado!",
+              text: "El usuario ha sido eliminado correctamente",
               icon: "success",
               showConfirmButton: false,
               timer: 2000

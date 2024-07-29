@@ -1,1 +1,32 @@
-<h1>Gestion Peliculas y Series</h1>
+
+<h1>Gestión Peliculas y Series ({{movie.length}})</h1>
+<div class="input-group mb-3">
+  <span class="input-group-text">
+    <i class="fa fa-filter"></i>
+  </span>
+  <input [(ngModel)]="filtro" type="text" class="form-control" placeholder="Filtrar">
+</div>
+
+<div>
+    <button (click)="addNewMovie()" class="btn btn-primary mb-3">Nueva película</button>
+</div>
+
+<ul class="row list-unstyled">
+    @for(movies of (movie); track movie){
+        <li class="col-md-6 col-sm-12 col-lg-3 my-1">
+            <div class="card h-100">
+                <img [src]="movies.image" width="200" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ movies.title}}</h5>
+                    <p class="card-text">{{ movies.synopsis }}</p>
+                    <p class="card-text">{{ movies.pricePerDay | divisa }} por día</p>
+                    <button (click)="editar(movies._id)" class="btn btn-outline-secondary">Editar</button>
+                    <button (click)="eliminar(movies._id)" id="button" class="btn btn-outline-danger">Eliminar</button>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Película del año {{ movies.year }}</small>
+                </div>
+            </div>
+        </li>
+    }
+</ul>

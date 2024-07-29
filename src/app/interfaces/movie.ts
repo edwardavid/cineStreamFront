@@ -12,5 +12,5 @@ export interface Movie {
   ageRestriction: string,
   trailer?: string,
   pricePerDay: number,
-  
+  type: string
 }
