@@ -9,3 +9,8 @@ p, li{
 ul{
     list-style-type: square;
 }
+
+.trailer {
+    width: 1070px;
+    height: 300px;
+}
