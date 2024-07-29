@@ -101,7 +101,7 @@ export class MyInfoComponent implements OnInit {
               showConfirmButton: false,
               timer: 2000
             }).then(() => {
-              this.authService.deleteUser(); // Cerrar sesión y redirigir a la página de inicio
+              this.authService.deleteUser();
             });
           },
           error: () => {
