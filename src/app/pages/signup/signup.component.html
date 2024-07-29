@@ -38,6 +38,12 @@
             <button class="btn btn-primary"><i class="fa fa-key"></i>Registrarse</button>
           </form>
 
+          @if(errorMessage){
+            <div  class="alert alert-danger mt-3">
+                {{ errorMessage }}
+            </div>
+
+        }
           <div class="mb-4"> 
             <p>
               ¿Ya tienes una cuenta? <a routerLink="/login"> Inicia sesión aquí</a> 

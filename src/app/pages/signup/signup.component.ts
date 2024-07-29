@@ -12,7 +12,7 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class SignupComponent {
   passwordType: string = "password"
-
+  errorMessage: string = '';
   form!: FormGroup
 
   constructor(private builder: FormBuilder,
@@ -32,6 +32,8 @@ export class SignupComponent {
         this.router.navigateByUrl("/login")
       },
       error:()=>{
+        this.errorMessage = 'Usuario Ya Existe';
+        console.error('Error de registro:', this.errorMessage);
 
       }
     })
