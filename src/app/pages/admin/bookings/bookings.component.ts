@@ -100,10 +100,18 @@ export class BookingsComponent {
         preConfirm: () => {
           const startDate = (document.getElementById('startDate') as HTMLInputElement).value;
           const endDate = (document.getElementById('endDate') as HTMLInputElement).value;
+          if (!startDate || new Date(startDate) < new Date()) {
+            Swal.showValidationMessage('La fecha de inicio no puede ser anterior a la fecha actual o estar vacía.');
+            return null;
+        }
+        if (!endDate) {
+            Swal.showValidationMessage('La fecha de fin no puede estar vacía.');
+            return null;
+        }
           return { startDate, endDate };
         }
       }).then((result) => {
-        if (result.isConfirmed) {
+        if (result.isConfirmed && result.value) {
           const { startDate, endDate } = result.value;
           this.bookingService.updateBooking(bookingId, startDate, endDate).subscribe({
             next: () => {

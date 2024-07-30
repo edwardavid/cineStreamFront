@@ -25,7 +25,7 @@
               <button (click)="eliminar(booking._id)" class="btn btn-danger btn-sm me-1">
                 <i class="fa fa-trash"></i>
               </button>
-              <button (click)="editar(booking._id)" class="btn btn-primary btn-sm">
+              <button (click)="editar(booking._id)" class="btn btn-primary btn-sm" [disabled]="!(booking.startDate | canCancel)">
                 <i class="fa fa-pencil"></i>
               </button>
             </td>
